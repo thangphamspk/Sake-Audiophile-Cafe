@@ -20,12 +20,9 @@ public class User {
     private String name;
 
     @ManyToMany(cascade = CascadeType.MERGE)
-    @JoinTable(
-            name = "user_roles",
-            joinColumns = {@JoinColumn(name = "user_id",
-                    referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "role_id",
-                    referencedColumnName = "id")})
+    @JoinTable(name = "user_roles",
+            joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")})
     private List<Role> roles;
 
     public User() {

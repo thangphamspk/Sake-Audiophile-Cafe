@@ -2,30 +2,25 @@ package com.sake.entity;
 
 import javax.persistence.*;
 
-@Entity(name = "contract_details")
-public class ContractDetail {
+@Entity(name = "drink_contract_detail")
+public class DrinkContractDetail {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    //Số lượng
     private Double amount;
 
-    //Đơn vị tính
     private String unit;
 
-    //Ghi chú
+
     private String note;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumns({
-            @JoinColumn(name = "material_id", referencedColumnName = "material_id"),
-            @JoinColumn(name = "supplier_id", referencedColumnName = "supplier_id")
-    })
-    private SupplyContract supplyContract;
+    @JoinColumn(name = "contract_id", referencedColumnName = "id")
+    private DrinkContract drinkContract;
 
-    public ContractDetail() {
+    public DrinkContractDetail() {
     }
 
     public Long getId() {
@@ -60,11 +55,12 @@ public class ContractDetail {
         this.note = note;
     }
 
-    public SupplyContract getSupplyContract() {
-        return supplyContract;
+    public DrinkContract getDrinkContract() {
+        return drinkContract;
     }
 
-    public void setSupplyContract(SupplyContract supplyContract) {
-        this.supplyContract = supplyContract;
+    public void setDrinkContract(DrinkContract drinkContract) {
+        this.drinkContract = drinkContract;
     }
+
 }

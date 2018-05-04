@@ -1,6 +1,7 @@
 package com.sake.entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity(name = "suppliers")
 public class Supplier {
@@ -20,6 +21,12 @@ public class Supplier {
     private String taxCode;
 
     private boolean enable;
+
+    @OneToMany(mappedBy = "supplier")
+    private Set<MaterialContract> materialContracts;
+
+    @OneToMany(mappedBy = "supplier")
+    private Set<DrinkContract> drinkContracts;
 
     public Supplier() {
     }
@@ -89,4 +96,19 @@ public class Supplier {
         this.enable = enable;
     }
 
+    public Set<MaterialContract> getMaterialContracts() {
+        return materialContracts;
+    }
+
+    public void setMaterialContracts(Set<MaterialContract> materialContracts) {
+        this.materialContracts = materialContracts;
+    }
+
+    public Set<DrinkContract> getDrinkContracts() {
+        return drinkContracts;
+    }
+
+    public void setDrinkContracts(Set<DrinkContract> drinkContracts) {
+        this.drinkContracts = drinkContracts;
+    }
 }

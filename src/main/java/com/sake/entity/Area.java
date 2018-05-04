@@ -56,4 +56,5 @@ public class Area {
     public void setTables(Set<Table> tables) {
         this.tables = tables;
     }
+
 }

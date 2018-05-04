@@ -1,6 +1,7 @@
 package com.sake.entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity(name = "drinks")
 public class Drink {
@@ -23,6 +24,8 @@ public class Drink {
     @JoinColumn(name = "type_id")
     private Type type;
 
+    @OneToMany(mappedBy = "drink")
+    private Set<DrinkContract> drinkContracts;
 
     public Drink() {
     }
@@ -82,5 +85,11 @@ public class Drink {
         this.type = type;
     }
 
+    public Set<DrinkContract> getDrinkContracts() {
+        return drinkContracts;
+    }
 
+    public void setDrinkContracts(Set<DrinkContract> drinkContracts) {
+        this.drinkContracts = drinkContracts;
+    }
 }

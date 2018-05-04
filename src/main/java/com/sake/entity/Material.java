@@ -1,9 +1,7 @@
 package com.sake.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity(name = "materials")
 public class Material {
@@ -15,6 +13,9 @@ public class Material {
     private String name;
 
     private String unit;
+
+    @OneToMany(mappedBy = "material")
+    private Set<MaterialContract> materialContracts;
 
     public Material() {
     }
@@ -42,4 +43,13 @@ public class Material {
     public void setUnit(String unit) {
         this.unit = unit;
     }
+
+    public Set<MaterialContract> getMaterialContracts() {
+        return materialContracts;
+    }
+
+    public void setMaterialContracts(Set<MaterialContract> materialContracts) {
+        this.materialContracts = materialContracts;
+    }
+
 }

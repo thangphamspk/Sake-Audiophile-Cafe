@@ -1,6 +1,7 @@
 package com.sake.entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity(name = "staffs")
 public class Staff {
@@ -18,6 +19,9 @@ public class Staff {
     private String email;
 
     private boolean enable;
+
+    @OneToMany(mappedBy = "staff")
+    private Set<Order> orders;
 
     public Staff() {
     }
@@ -76,5 +80,13 @@ public class Staff {
 
     public void setEnable(boolean enable) {
         this.enable = enable;
+    }
+
+    public Set<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Set<Order> orders) {
+        this.orders = orders;
     }
 }

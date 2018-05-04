@@ -14,6 +14,7 @@ public class Table {
     private boolean enable;
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "area_id", referencedColumnName = "id")
     private Area area;
 
     public Table() {
@@ -50,4 +51,5 @@ public class Table {
     public void setArea(Area area) {
         this.area = area;
     }
+
 }
